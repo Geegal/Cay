@@ -76,8 +76,16 @@ fun Demo(){
             modifier = Modifier.align(Alignment.CenterHorizontally)
 
         ) {
-            Button(onClick = {})
-            { Text("see more") }
+            Button(onClick = { mContext.startActivity(Intent(mContext, DestinationActivity::class.java)) },
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(Color.Red),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 30.dp, end = 30.dp)) {
+                Text(text = "Destination")
+
+            }
+
         }
         Text(text = "Types of cars",
             fontSize = 20.sp,
