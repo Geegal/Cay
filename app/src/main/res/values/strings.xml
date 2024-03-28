@@ -5,4 +5,5 @@
     <string name="title_activity_form">formActivity</string>
     <string name="title_activity_destination">DestinationActivity</string>
     <string name="title_activity_explore">ExploreActivity</string>
+    <string name="title_activity_woof">WoofActivity</string>
 </resources>

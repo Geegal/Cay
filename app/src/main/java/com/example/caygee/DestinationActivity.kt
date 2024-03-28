@@ -371,6 +371,15 @@ Text(
             Text(text = "Explore")
 
         }
+Button(onClick = { mContext.startActivity(Intent(mContext, WoofActivity::class.java)) },
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(Color.Red),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp)) {
+            Text(text = "Woof")
+
+        }
 
 
 
