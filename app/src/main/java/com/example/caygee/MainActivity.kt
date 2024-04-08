@@ -10,21 +10,22 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,9 +40,10 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.caygee.ui.theme.CayGeeTheme
-import com.example.caygee.LayoutActivity
-import com.example.caygee.R
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,11 +57,23 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Demo(){
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier.fillMaxSize()
+                           .verticalScroll(rememberScrollState())
+    ) {
 
         val mContext = LocalContext.current
 
+        //Lottie Animation
+        val composition by rememberLottieComposition(spec = LottieCompositionSpec.RawRes(R.raw.home))
+        val progress by animateLottieCompositionAsState(composition)
+        LottieAnimation(composition, progress,
+            modifier = Modifier.size(60.dp),
 
+
+
+
+        )
 
         Text(
             text = "Welcome to Android",
@@ -164,6 +178,51 @@ fun Demo(){
                 .fillMaxWidth()
                 .padding(start = 30.dp, end = 30.dp)) {
             Text(text = "Continue")
+
+        }
+        Button(onClick = { mContext.startActivity(Intent(mContext, LottieActivity::class.java)) },
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(Color.Red),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp)) {
+            Text(text = "Lottie")
+
+        }
+        Button(onClick = { mContext.startActivity(Intent(mContext, AceActivity4::class.java)) },
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(Color.Red),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp)) {
+            Text(text = "Chairs")
+
+        }
+        Button(onClick = { mContext.startActivity(Intent(mContext, AceActivity3::class.java)) },
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(Color.Red),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp)) {
+            Text(text = "three")
+
+        }
+        Button(onClick = { mContext.startActivity(Intent(mContext, AceActivity2::class.java)) },
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(Color.Red),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp)) {
+            Text(text = "two")
+
+        }
+        Button(onClick = { mContext.startActivity(Intent(mContext, AceActivity1::class.java)) },
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(Color.Red),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 30.dp, end = 30.dp)) {
+            Text(text = "one")
 
         }
     }

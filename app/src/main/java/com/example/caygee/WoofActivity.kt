@@ -126,7 +126,7 @@ fun Woof(){
             ){
                Row {
                    Image(
-                       painter = painterResource(id = R.drawable.doggie),
+                       painter = painterResource(id = R.drawable.d2),
                        contentDescription = "Dog",
                        modifier = Modifier
                            .width(60.dp)
@@ -144,7 +144,7 @@ fun Woof(){
                            fontSize = 20.sp,
                            fontWeight = FontWeight.Bold
                            )
-                       Text(text = "2 years old")
+                       Text(text = "16 years old")
 
                    }
                }
@@ -160,7 +160,7 @@ fun Woof(){
             ){
                Row {
                    Image(
-                       painter = painterResource(id = R.drawable.doggie),
+                       painter = painterResource(id = R.drawable.d3),
                        contentDescription = "Dog",
                        modifier = Modifier
                            .width(60.dp)
@@ -194,7 +194,7 @@ fun Woof(){
             ){
                Row {
                    Image(
-                       painter = painterResource(id = R.drawable.doggie),
+                       painter = painterResource(id = R.drawable.d4),
                        contentDescription = "Dog",
                        modifier = Modifier
                            .width(60.dp)
@@ -213,7 +213,7 @@ fun Woof(){
                            fontWeight = FontWeight.Bold,
 
                            )
-                       Text(text = "2 years old")
+                       Text(text = "8 years old")
 
                    }
                }
@@ -229,7 +229,7 @@ fun Woof(){
             ){
                Row {
                    Image(
-                       painter = painterResource(id = R.drawable.doggie),
+                       painter = painterResource(id = R.drawable.d5),
                        contentDescription = "Dog",
                        modifier = Modifier
                            .width(60.dp)
@@ -247,7 +247,7 @@ fun Woof(){
                            fontSize = 20.sp,
                            fontWeight = FontWeight.Bold
                            )
-                       Text(text = "2 years old")
+                       Text(text = "8 years old")
 
                    }
                }
@@ -263,7 +263,7 @@ fun Woof(){
             ){
                Row {
                    Image(
-                       painter = painterResource(id = R.drawable.doggie),
+                       painter = painterResource(id = R.drawable.d6),
                        contentDescription = "Dog",
                        modifier = Modifier
                            .width(60.dp)
@@ -281,7 +281,7 @@ fun Woof(){
                            fontSize = 20.sp,
                            fontWeight = FontWeight.Bold
                            )
-                       Text(text = "2 years old")
+                       Text(text = "14 years old")
 
                    }
                }
@@ -297,7 +297,7 @@ fun Woof(){
             ){
                Row {
                    Image(
-                       painter = painterResource(id = R.drawable.doggie),
+                       painter = painterResource(id = R.drawable.d7),
                        contentDescription = "Dog",
                        modifier = Modifier
                            .width(60.dp)
@@ -349,7 +349,7 @@ fun Woof(){
                            fontSize = 20.sp,
                            fontWeight = FontWeight.Bold
                            )
-                       Text(text = "2 years old")
+                       Text(text = "7 years old")
 
                    }
                }

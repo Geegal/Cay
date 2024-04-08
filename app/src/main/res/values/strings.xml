@@ -6,4 +6,10 @@
     <string name="title_activity_destination">DestinationActivity</string>
     <string name="title_activity_explore">ExploreActivity</string>
     <string name="title_activity_woof">WoofActivity</string>
+    <string name="title_activity_lottie">LottieActivity</string>
+    <string name="title_activity_splashscreen">Splashscreen</string>
+    <string name="title_activity_ace1">AceActivity1</string>
+    <string name="title_activity_ace2">AceActivity2</string>
+    <string name="title_activity_ace3">AceActivity3</string>
+    <string name="title_activity_ace4">AceActivity4</string>
 </resources>
