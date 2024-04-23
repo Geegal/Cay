@@ -1,5 +1,6 @@
 package com.example.caygee
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -37,6 +38,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -51,730 +53,717 @@ import androidx.compose.ui.unit.sp
 import androidx.core.net.toUri
 import com.example.caygee.ui.theme.CayGeeTheme
 import com.example.caygee.ui.theme.Cream5
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class AceActivity4 : ComponentActivity() {
+    @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             Mypage()
 
+            val mContext = LocalContext.current
+            val coroutineScope = rememberCoroutineScope()
+            coroutineScope.launch {
+                delay(4000)
+                mContext.startActivity(Intent(mContext, MainActivity::class.java))
+
+
+            }
         }
     }
-}
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Mypage() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-    ) {
-        val mContext = LocalContext.current
-        //TopAppBar
-        TopAppBar(
-            title = { Text(text = "", color = Color.Black) },
-            colors = TopAppBarDefaults.mediumTopAppBarColors(Color.White),
-            navigationIcon = {
-                IconButton(onClick = {
-                    mContext.startActivity(
-                        Intent(
-                            mContext,
-                            MainActivity::class.java
-                        )
-                    )
-                }) {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "arrowback",
-                        tint = Color.Black
-                    )
-
-                }
-            },
-            actions = {
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.Lock,
-                        contentDescription = "share",
-                        tint = Color.Black
-                    )
-
-                }
-                IconButton(onClick = { /*TODO*/ }) {
-                    Icon(
-                        imageVector = Icons.Default.Menu,
-                        contentDescription = "settings",
-                        tint = Color.Black
-                    )
-
-                }
-            },
-
-            )//End of TopAppBar
-        Spacer(modifier = Modifier.height(5.dp))
-
-        Row(
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun Mypage() {
+        Column(
             modifier = Modifier
-                .horizontalScroll(rememberScrollState())
-                .padding(start = 5.dp)
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
         ) {
-            Text(
-                text = "Chairs",
-                fontSize = 35.sp,
-                fontWeight = FontWeight.ExtraBold
-            )
-            Spacer(modifier = Modifier.width(15.dp))
-            Text(
-                text = "Tables",
-                fontSize = 35.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color.Gray,
-            )
-            Spacer(modifier = Modifier.width(15.dp))
-            Text(
-                text = "Sofa",
-                fontSize = 35.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color.Gray,
-            )
-            Spacer(modifier = Modifier.width(15.dp))
-            Text(
-                text = "Beds",
-                fontSize = 35.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color.Gray,
-            )
+            val mContext = LocalContext.current
+            //TopAppBar
+            TopAppBar(
+                title = { Text(text = "", color = Color.Black) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(Color.White),
+                navigationIcon = {
+                    IconButton(onClick = {
+                        mContext.startActivity(
+                            Intent(
+                                mContext,
+                                MainActivity::class.java
+                            )
+                        )
+                    }) {
+                        Icon(
+                            imageVector = Icons.Default.ArrowBack,
+                            contentDescription = "arrowback",
+                            tint = Color.Black
+                        )
 
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            imageVector = Icons.Default.Lock,
+                            contentDescription = "share",
+                            tint = Color.Black
+                        )
 
-        }
-        Spacer(modifier = Modifier.height(15.dp))
-        Row {
-            Text(
-                text = " 120 products",
-                fontSize = 15.sp,
-            )
+                    }
+                    IconButton(onClick = { /*TODO*/ }) {
+                        Icon(
+                            imageVector = Icons.Default.Menu,
+                            contentDescription = "settings",
+                            tint = Color.Black
+                        )
 
-            Text(
-                text = " Popular ",
-                fontSize = 20.sp,
-                fontWeight = FontWeight.ExtraBold,
-                modifier = Modifier.padding(start = 170.dp),
-            )
-            Icon(
-                imageVector = Icons.Default.KeyboardArrowDown,
-                contentDescription = "ArrowDown",
-                modifier = Modifier.padding(top = 5.dp)
-            )
-        }
-        Column {
+                    }
+                },
+
+                )//End of TopAppBar
+            Spacer(modifier = Modifier.height(5.dp))
+
             Row(
-                modifier = Modifier.padding(start = 10.dp)
+                modifier = Modifier
+                    .horizontalScroll(rememberScrollState())
+                    .padding(start = 5.dp)
             ) {
-                //Column1
-               Card (modifier = Modifier.padding(start = 5.dp)){
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
-
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
-
-                           }
-
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
-
-                       Spacer(modifier = Modifier.height(5.dp))
-
-
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
-
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
-
-
-                   }
-               }
-                Spacer(modifier = Modifier.width(25.dp))
-                Card {
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
-
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
-
-                           }
-
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
-
-                       Spacer(modifier = Modifier.height(5.dp))
-
-
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
-
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
-
-
-                   }
-               }
-
-
-
+                Text(
+                    text = "Chairs",
+                    fontSize = 35.sp,
+                    fontWeight = FontWeight.ExtraBold
+                )
+                Spacer(modifier = Modifier.width(15.dp))
+                Text(
+                    text = "Tables",
+                    fontSize = 35.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.Gray,
+                )
+                Spacer(modifier = Modifier.width(15.dp))
+                Text(
+                    text = "Sofa",
+                    fontSize = 35.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.Gray,
+                )
+                Spacer(modifier = Modifier.width(15.dp))
+                Text(
+                    text = "Beds",
+                    fontSize = 35.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    color = Color.Gray,
+                )
 
 
             }
-            Spacer(modifier = Modifier.height(25.dp))
-            Row(
-                modifier = Modifier.padding(start = 10.dp)
-            ) {
-                //Column1
-               Card (modifier = Modifier.padding(start = 5.dp)){
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
+            Spacer(modifier = Modifier.height(15.dp))
+            Row {
+                Text(
+                    text = " 120 products",
+                    fontSize = 15.sp,
+                )
 
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
-
-                           }
-
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
-
-                       Spacer(modifier = Modifier.height(5.dp))
-
-
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
-
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
-
-
-                   }
-               }
-                Spacer(modifier = Modifier.width(25.dp))
-                Card {
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
-
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
-
-                           }
-
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
-
-                       Spacer(modifier = Modifier.height(5.dp))
-
-
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
-
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
-
-
-                   }
-               }
-
-
-
-
-
+                Text(
+                    text = " Popular ",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.ExtraBold,
+                    modifier = Modifier.padding(start = 170.dp),
+                )
+                Icon(
+                    imageVector = Icons.Default.KeyboardArrowDown,
+                    contentDescription = "ArrowDown",
+                    modifier = Modifier.padding(top = 5.dp)
+                )
             }
-            Spacer(modifier = Modifier.height(25.dp))
-            Row(
-                modifier = Modifier.padding(start = 10.dp)
-            ) {
-                //Column1
-               Card (modifier = Modifier.padding(start = 5.dp)){
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
+            Column {
+                Row(
+                    modifier = Modifier.padding(start = 10.dp)
+                ) {
+                    //Column1
+                    Card(modifier = Modifier.padding(start = 5.dp)) {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
 
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
 
-                           }
+                                }
 
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
 
-                       Spacer(modifier = Modifier.height(5.dp))
-
-
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
-
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
+                            Spacer(modifier = Modifier.height(5.dp))
 
 
-                   }
-               }
-                Spacer(modifier = Modifier.width(25.dp))
-                Card {
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
 
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
 
-                           }
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
 
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
-
-                       Spacer(modifier = Modifier.height(5.dp))
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
 
 
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(25.dp))
+                    Card {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
 
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
 
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
+                                }
 
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
 
-
-                   }
-               }
+                            Spacer(modifier = Modifier.height(5.dp))
 
 
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
+
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
 
 
+                        }
+                    }
 
+
+                }
+                Spacer(modifier = Modifier.height(25.dp))
+                Row(
+                    modifier = Modifier.padding(start = 10.dp)
+                ) {
+                    //Column1
+                    Card(modifier = Modifier.padding(start = 5.dp)) {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
+
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Spacer(modifier = Modifier.height(5.dp))
+
+
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
+
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
+
+
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(25.dp))
+                    Card {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
+
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Spacer(modifier = Modifier.height(5.dp))
+
+
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
+
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
+
+
+                        }
+                    }
+
+
+                }
+                Spacer(modifier = Modifier.height(25.dp))
+                Row(
+                    modifier = Modifier.padding(start = 10.dp)
+                ) {
+                    //Column1
+                    Card(modifier = Modifier.padding(start = 5.dp)) {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
+
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Spacer(modifier = Modifier.height(5.dp))
+
+
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
+
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
+
+
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(25.dp))
+                    Card {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
+
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Spacer(modifier = Modifier.height(5.dp))
+
+
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
+
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
+
+
+                        }
+                    }
+
+
+                }
+                Spacer(modifier = Modifier.height(25.dp))
+                Row(
+                    modifier = Modifier.padding(start = 10.dp)
+                ) {
+                    //Column1
+                    Card(modifier = Modifier.padding(start = 5.dp)) {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
+
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Spacer(modifier = Modifier.height(5.dp))
+
+
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
+
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
+
+
+                        }
+                    }
+                    Spacer(modifier = Modifier.width(25.dp))
+
+                    Card {
+                        Column {
+                            Card(
+                                modifier = Modifier
+                                    .height(100.dp)
+                                    .width(150.dp)
+                                    .padding(15.dp)
+
+                            ) {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.c10),
+                                        contentDescription = "chair10",
+                                        modifier = Modifier.fillMaxSize(),
+                                        contentScale = ContentScale.FillBounds
+                                    )
+
+                                }
+
+                            }
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "Amos Chair",
+                                fontSize = 20.sp,
+                                fontFamily = FontFamily.Serif,
+                                fontWeight = FontWeight.Bold,
+                            )
+
+                            Spacer(modifier = Modifier.height(5.dp))
+
+
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Text(
+                                text = "The Best of All",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Text(
+                                text = "Times",
+                                fontSize = 15.sp,
+                                fontFamily = FontFamily.Serif,
+
+                                )
+                            Spacer(modifier = Modifier.height(5.dp))
+                            Row {
+                                Text(
+                                    text = "Kshs.380000",
+                                    fontSize = 15.sp,
+                                    fontFamily = FontFamily.Serif,
+                                    color = Color.Black
+
+                                )
+                                Icon(
+                                    imageVector = Icons.Default.Lock,
+                                    contentDescription = "Basket",
+                                    tint = Color.Black,
+                                    modifier = Modifier.padding(start = 20.dp)
+                                )
+                            }
+
+
+                        }
+                    }
+
+
+                }
             }
-            Spacer(modifier = Modifier.height(25.dp))
-            Row(
-                modifier = Modifier.padding(start = 10.dp)
-            ) {
-                //Column1
-               Card (modifier = Modifier.padding(start = 5.dp)){
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
-
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
-
-                           }
-
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
-
-                       Spacer(modifier = Modifier.height(5.dp))
-
-
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
-
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
-
-
-                   }
-               }
-                Spacer(modifier = Modifier.width(25.dp))
-
-                Card {
-                   Column {
-                       Card(
-                           modifier = Modifier
-                               .height(100.dp)
-                               .width(150.dp)
-                               .padding(15.dp)
-
-                       ) {
-                           Box(
-                               modifier = Modifier.fillMaxWidth(),
-                               contentAlignment = Alignment.Center
-                           ) {
-                               Image(
-                                   painter = painterResource(id = R.drawable.c10),
-                                   contentDescription = "chair10",
-                                   modifier = Modifier.fillMaxSize(),
-                                   contentScale = ContentScale.FillBounds
-                               )
-
-                           }
-
-                       }
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "Amos Chair",
-                           fontSize = 20.sp,
-                           fontFamily = FontFamily.Serif,
-                           fontWeight = FontWeight.Bold,
-                       )
-
-                       Spacer(modifier = Modifier.height(5.dp))
-
-
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Text(
-                           text = "The Best of All",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Text(
-                           text = "Times",
-                           fontSize = 15.sp,
-                           fontFamily = FontFamily.Serif,
-
-                           )
-                       Spacer(modifier = Modifier.height(5.dp))
-                       Row {
-                           Text(
-                               text = "Kshs.380000",
-                               fontSize = 15.sp,
-                               fontFamily = FontFamily.Serif,
-                               color = Color.Black
-
-                           )
-                           Icon(
-                               imageVector =Icons.Default.Lock ,
-                               contentDescription ="Basket",
-                               tint = Color.Black,
-                               modifier = Modifier.padding(start = 20.dp)
-                           )
-                       }
-
-
-                   }
-               }
-
-
-
-
-
-            }
-        }
-
-
 
 
 //End of Column1
 
+        }
     }
-}
 
 
-
-
-
-
-
-
-
-
-
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun MypagePreview(){
-    Mypage()
+    @Preview(showBackground = true, showSystemUi = true)
+    @Composable
+    fun MypagePreview() {
+        Mypage()
+    }
 }
